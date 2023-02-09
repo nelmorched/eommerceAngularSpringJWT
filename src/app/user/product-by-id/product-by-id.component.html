@@ -1,0 +1,55 @@
+
+<mat-toolbar>    
+    <span class="example-spacer"> </span>
+    <mat-select  placeholder="Categorys"  name="category" id="category" style="width: 150px; margin-right: 5px;">
+        <mat-option *ngFor="let cat of categorys">
+            <button mat-stroked-button color="whie" style="border-color: aliceblue;" (click)="productByCategory(cat.id_cat)"> {{cat.name}} </button>
+          </mat-option>
+         </mat-select>
+    <mat-select  placeholder="Brands"  name="brandProduct" id="brandProduct"style="width: 150px;"  >
+        <mat-option *ngFor="let brand of brands"> 
+            <button mat-stroked-button color="whie" style="border-color: aliceblue;" (click)="allProductByBrand(brand.id_brand)"> {{brand.nameBrand}} </button>
+          </mat-option>
+            </mat-select> 
+    </mat-toolbar>
+    
+    <div class="container mt-5">
+                
+                      <mat-card class="example-card">
+                  <div class="row">
+                    <div class="col-6">  
+                            <img style="width: 250px; height: 250px;" mat-card-image [src]="product.productImages[0].url">
+                            </div> 
+                         <div class="col-6">
+                                    <mat-card-content> 
+                                           <mat-card-title > {{product.productName | uppercase }}</mat-card-title>
+                                           <mat-card-subtitle> {{product.category.name | uppercase }} </mat-card-subtitle>
+                                           <p style="white-space: inherit;height: 40px;width: 288;
+                                           overflow: hidden;text-overflow: ellipsis;">
+                                                  {{product.description}}.
+                                           </p>
+                                           <p>
+                                                  Brand <b>{{product.brandProduct.nameBrand }}</b>
+                                           </p>
+                                           <p>
+                                                  Actual price <b>{{product.actPrice | currency }}</b>
+                                           </p>
+                                           <p>
+                                                  Old price <b><i style="color: red;"><u>{{product.price | currency}}</u></i></b>
+                                           </p>
+                                            <div align="end">
+                                                 
+                                                 <button
+                                                 (click)="buyProduct(product.id)" mat-raised-button color="primary"
+                                           aria-label="Example icon button with a delete icon">
+                                           
+                                           Buy Product</button>
+                                    </div>
+                                            
+                                    </mat-card-content>
+                             </div>
+                             </div>
+                             </mat-card>
+                     
+       
+    </div>

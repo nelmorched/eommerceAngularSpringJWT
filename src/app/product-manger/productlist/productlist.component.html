@@ -1,0 +1,80 @@
+
+ <div>
+  <div class="text-nowrap">
+    <div class="demo-button-container" >
+      <button
+      
+           routerLink="/addProduct"
+          color="primary"
+           mat-raised-button
+           class="demo-button">
+           Add Product
+       </button>
+     </div>
+     <div class="alert alert-danger"  *ngIf=valid> 
+      <i   class="text text-center" style="color:blue;" >{{message}}</i>
+    </div>
+  <table mat-table [dataSource]="productdetails" class="mat-elevation-z8" >
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+  
+    <!-- Position Column -->
+    <ng-container matColumnDef="ID">
+      <th mat-header-cell *matHeaderCellDef> ID </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="PRODUCT NAME">
+      <th mat-header-cell *matHeaderCellDef> PRODUCT NAME </th>
+      <td mat-cell *matCellDef="let element"> {{element.productName}} </td>
+    </ng-container>
+  
+    <!-- Weight Column -->
+    <ng-container matColumnDef="PRICE">
+      <th mat-header-cell *matHeaderCellDef> PRICE </th>
+      <td mat-cell *matCellDef="let element"> {{element.price | currency}} </td>
+    </ng-container>
+  
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="ACTUAL PRICE">
+      <th mat-header-cell *matHeaderCellDef> ACTUAL PRICE </th>
+      <td mat-cell *matCellDef="let element"> {{element.actPrice| currency}}  </td>
+    </ng-container>
+    <ng-container matColumnDef="CATEGORY">
+      <th mat-header-cell *matHeaderCellDef> CATEGORY</th>
+      <td mat-cell *matCellDef="let element">{{element.category.name }}</td>
+    </ng-container>
+    <ng-container matColumnDef="BRAND">
+      <th mat-header-cell *matHeaderCellDef> BRAND</th>
+      <td mat-cell *matCellDef="let element"> {{element.brandProduct.nameBrand}} </td>
+    </ng-container>
+    <ng-container matColumnDef="ACTION">
+      <th mat-header-cell *matHeaderCellDef> ACTION </th>
+      <td mat-cell *matCellDef="let element"> 
+        <button class="btn btn-warning" style="margin-right: 2px;"  (click)="Dialog(element)">
+          IMAGES
+        </button>
+         <button class="btn btn-primary" style="margin-right: 2px;" (click)="updateProduct(element.id)" >
+          UPDATE
+        </button> 
+     
+         <button  *ngIf="!element.etat" class="btn btn-danger"  (click)="desactiveProduct(element.id)">
+          DESACTIVE
+        </button>
+      
+        <button class="btn btn-success" *ngIf="element.etat"  (click)="activeProduct(element.id)">
+         ACTIVE
+       </button>
+    
+      </td>
+    </ng-container>
+    
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  </div>
+  
+ </div>
+ 

@@ -1,0 +1,46 @@
+<div class="container mt-5 w-50">
+   <div class="card " style="border-color:  gray;">
+        <form  (ngSubmit)="addAdmin()" >
+
+
+            <div align="center">
+            <h1> Add Admin</h1>
+                <mat-form-field appearance="outline" class="w-50" style="margin-right: 5px;">
+                    <mat-label>User Name</mat-label>
+                    <input  matInput placeholder="User Name"
+                     name="userName" 
+                     [(ngModel)]="admin.userName"
+                     >
+                 </mat-form-field>
+                 <mat-form-field appearance="outline" class="w-50" style="margin-right: 5px;">
+                    <mat-label>First Name </mat-label>
+                    <input matInput placeholder="Firs Name" 
+                    name="userFirstName"
+                    [(ngModel)]="admin.userFirstName"
+                    >
+                 </mat-form-field>
+                 <mat-form-field appearance="outline" class="w-50" style="margin-right: 5px;">
+                    <mat-label>Last Name </mat-label>
+                    <input matInput placeholder="Firs Name" 
+                    name="userlastName" [(ngModel)]="admin.userLastName" >
+                 </mat-form-field>
+                 
+                 <mat-form-field appearance="outline" class="w-50"style="margin-right: 5px;">
+                    <mat-label>Passwod </mat-label>
+                    <input type="password" [(ngModel)]="admin.userPassword" matInput placeholder="Password"  name="userPassword"
+                    >
+                 </mat-form-field>
+                                  
+                 <div align="center">
+                    <button style="margin-right: 3px;" type="submit" mat-stroked-button color="primary" >Add Admin</button>
+                 </div>
+                
+            </div>
+          
+           
+            
+      
+    </form>
+    </div> 
+    </div>
+    

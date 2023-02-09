@@ -1,0 +1,40 @@
+<div class="container mt-10">
+    
+        <div class="card"  style=" margin: 50px; padding: 50px;">
+          <i class="alert alert-danger" *ngIf="valid">
+            {{message}}
+          </i>
+                <mat-label><h3>Login</h3></mat-label>
+                
+                <form #loginForm = "ngForm" (ngSubmit)="login(loginForm)" >
+            
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>Enter your Username or Email</mat-label>
+                        <input
+                        class="form-control mb-3"
+                        ngModel name="userName" id="userName"  matInput placeholder="Username">
+                        <mat-icon mat-icon-button matSuffix> book</mat-icon>
+
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="w-100">
+                      <mat-label>Enter your password</mat-label>
+                     <input 
+                     class="form-control mb-3"
+                     ngModel name="userPassword" id="userPassword" matInput [type]="hide ? 'password' : 'text'">
+                     <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                     </button>
+                    </mat-form-field>
+                    <br>
+                    <button class="w-100"  mat-raised-button type="submit" color="primary" >Login</button><br>
+                    <div class="text-center mt-3">
+                      <button style="border: 0px;" mat-stroked-button  routerLink="/register">
+                        Create new account !!</button>
+
+                    </div>
+             
+              </form>
+            </div>
+   
+</div>
+

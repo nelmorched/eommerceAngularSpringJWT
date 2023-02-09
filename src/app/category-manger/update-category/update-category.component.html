@@ -1,0 +1,22 @@
+<div align="center">
+       
+    <h3>ADD NEW CATEGORY </h3> 
+    
+   
+    <form (ngSubmit)="updateCat()">
+        
+     <mat-form-field appearance="outline" class="w-50">
+         <mat-label>Put Category name here</mat-label>
+         <input 
+         [(ngModel)]="cat.name" name="name"
+        
+         
+         matInput placeholder="Put Category name here">
+         <mat-icon matSuffix>category</mat-icon>
+       </mat-form-field>
+
+         
+       <div align="center">
+        <button  type="submit" mat-raised-button color="primary">Save Category</button>
+
+       </div>

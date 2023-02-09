@@ -1,0 +1,6 @@
+.container
+{
+    width: max-content;
+    display: flexbox;
+     justify-content: center;
+}

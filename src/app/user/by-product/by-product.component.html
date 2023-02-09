@@ -1,0 +1,91 @@
+<mat-toolbar>
+  <span class="example-spacer"> </span>
+  <mat-select placeholder="Categorys" name="category" id="category" style="width: 150px; margin-right: 5px;">
+    <mat-option *ngFor="let cat of categorys">
+      <button mat-stroked-button color="whie" style="border-color: aliceblue;" (click)="productByCategory(cat.id_cat)">
+        {{cat.name}} </button>
+    </mat-option>
+  </mat-select>
+  <mat-select placeholder="Brands" name="brandProduct" id="brandProduct" style="width: 150px;">
+    <mat-option *ngFor="let brand of brands">
+      <button mat-stroked-button color="whie" style="border-color: aliceblue;"
+        (click)="allProductByBrand(brand.id_brand)"> {{brand.nameBrand}} </button>
+    </mat-option>
+  </mat-select>
+</mat-toolbar>
+<div class="container mt-5">
+  <div class="card">
+    <div class="row"> 
+       <i class="alert alert-primary" *ngIf="valid">
+           {{message}}
+        </i>
+      <div class="col-6 ">
+        <div class="p-3">
+       
+        <form #orderForm="ngForm" (ngSubmit)="placeOrder(orderForm)" >
+
+                  <mat-form-field appearance="outline" class="w-100">
+                      <mat-label>Full name</mat-label>
+                      <input  matInput placeholder="Full Name"
+                      [(ngModel)]="orderDetails.fullName" name="fullName">
+                   </mat-form-field>
+                   <mat-form-field appearance="outline" class="w-100">
+                      <mat-label>Full Adresse</mat-label>
+                      <input matInput placeholder="Full Adresse" 
+                      [(ngModel)]="orderDetails.fullAdresse"name="fullAdresse">
+                     </mat-form-field>
+                   
+                  
+                   
+                   <mat-form-field appearance="outline" class="w-100">
+                      <mat-label>Alternate Contact Number</mat-label>
+                      <input  
+                       matInput placeholder="Alternate Contact Number" 
+                        [(ngModel)]="orderDetails.altContactNumber" name="altContactNumber">
+                   </mat-form-field>
+
+                 <mat-form-field appearance="outline" class="w-100">
+                      <mat-label>Contact Number</mat-label>
+                      <input type="tel" 
+                       matInput placeholder="Contact Number" 
+                       [(ngModel)]="orderDetails.contactNumber" name="contactNumber">
+                   </mat-form-field>
+                   <div align="end">
+                      <button style="margin-right: 3px;" type="submit" mat-stroked-button color="primary" >Add Product</button>
+                      <button  type="reset" mat-stroked-button color="warn" >Cancel</button>
+                   </div>
+      </form> 
+      </div>
+    </div>
+      <div class="col-6 p-3">
+      <table class="table">
+        <thead class="thead">
+          <th>NAME</th>
+          <th>AMOUNT</th>
+          <th>QUANTITY</th>
+          <th>TOTAL PRICE</th>
+        </thead>
+        <tbody class="tbody">
+<tr *ngFor="let prod of productDetails">
+  <td> {{prod.productName}}</td>
+  <td> {{prod.actPrice}} </td>
+  <td> 
+    <input #Qte (change)="onQteCHnage(Qte.value , prod.id)"
+    type="number" [ngModel]="getQuantityforProduct(prod.id)" class="form-control" style="font-size: small;">
+  </td>
+  <td>{{calculTotalPrice(prod.id, prod.actPrice)}}
+  </td>
+</tr>
+
+ <tr> 
+  <div class="end">
+    <td> SUB-TOTAL </td>
+  
+ </div>
+</tr>
+        </tbody>
+      </table> 
+      </div>
+    </div>
+  </div>
+</div>

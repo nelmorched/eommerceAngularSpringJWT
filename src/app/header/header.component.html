@@ -1,0 +1,33 @@
+<mat-toolbar>
+        <span>
+            <img  style="width: 40px;height: 40px;" src="assets/logo/logo.svg" alt="logo" title="Posh Auto Parts" /></span>
+            &nbsp;&nbsp;
+            <div *ngIf="userService.roleMatch(['User']) || !isLoggedIn()">
+        <span> 
+            <button  mat-button color="primary"  routerLink="/">
+                
+                Home</button>
+            <button mat-button color="basic" routerLink="/product-list">
+               Products                   
+            </button>        
+            <button mat-button color="basic"  >
+              Contact Us </button>
+            <button mat-button color="basic"  >About Us</button>
+            </span>
+       </div>
+       <div *ngIf="userService.roleMatch(['Admin'])">
+        <span> 
+            <button  mat-button color="primary" routerLink="/indexadmin">Home</button>
+            <button mat-button color="basic"  routerLink="/product">    Product </button>
+            <button mat-button color="basic"  routerLink="/category">Category </button>
+            <button mat-button color="basic"  routerLink="/brand">Brand </button>
+            </span>
+         </div>
+        
+          <span class="example-spacer"> </span>
+            <button mat-button color="primary" *ngIf="userService.roleMatch(['Admin'])" routerLink="/addAdmin" >ADD ADMIN</button>
+            <button  mat-button color="primary" *ngIf="!isLoggedIn()"    routerLink="/login">Login</button>
+           
+            <button mat-button color="warn" *ngIf="isLoggedIn()"    (click)="logout()">logout</button>
+            <button mat-button color="accent" *ngIf="!isLoggedIn()" >Create Account</button>
+  </mat-toolbar>

@@ -1,0 +1,67 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="alert alert-danger"  *ngIf=valid> 
+      <i   class="text text-center" style="color:blue;" >{{message}}</i>
+    </div>
+    
+    
+    <div class="col-6">
+      
+
+        <table mat-table [dataSource]="brands" class="mat-elevation-z8" >
+
+            <!--- Note that these columns can be defined in any order.
+                  The actual rendered columns are set as a property on the row definition" -->
+          
+            <!-- Position Column -->
+            <ng-container matColumnDef="ID">
+              <th mat-header-cell *matHeaderCellDef> ID </th>
+              <td mat-cell *matCellDef="let element"> {{element.id_brand}} </td>
+            </ng-container>
+          
+            <!-- Name Column -->
+            <ng-container matColumnDef="BRAND NAME">
+              <th mat-header-cell *matHeaderCellDef> BRAND NAME </th>
+              <td mat-cell *matCellDef="let element">{{element.nameBrand | uppercase}} </td>
+            </ng-container>
+            <ng-container matColumnDef="ACTION">
+              <th mat-header-cell *matHeaderCellDef> ACTION </th>
+              <td mat-cell *matCellDef="let element"> 
+                 <button  class="btn btn-primary" style="margin-right: 2px;" (click)="updateBrands(element.id_brand)">
+                  Update
+                 </button>  
+                 <button class="btn btn-danger" (click)="deleteBrand(element.id_brand)" >
+                  Delete
+                  </button>
+              </td>
+            </ng-container>
+            
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+    </div>
+    <div class="col-6">
+     
+      <h3>ADD NEW BRAND </h3> 
+      
+     
+      <form  (ngSubmit)="addBrand()">
+        
+       <mat-form-field appearance="outline" class="w-100">
+           <mat-label>Put BRAND name here</mat-label>
+           <input 
+            [(ngModel)]="brand.nameBrand"
+           name="nameBrand"
+           matInput placeholder="Put Category name here">
+           <mat-icon matSuffix>BRAND</mat-icon>
+         </mat-form-field>
+         
+         <div align="center">
+          <button  type="submit" mat-raised-button color="primary">Save BRAND</button>
+
+         </div>
+
+      </form> 
+    </div>
+  </div>
+     

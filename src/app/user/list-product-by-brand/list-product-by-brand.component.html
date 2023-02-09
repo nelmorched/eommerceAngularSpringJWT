@@ -1,0 +1,58 @@
+
+<mat-toolbar>
+ 
+  
+    
+    <span class="example-spacer"> </span>
+    <mat-select  placeholder="Categorys"  name="category" id="category" style="width: 150px; margin-right: 5px;">
+        <mat-option *ngFor="let cat of categorys">
+            <button mat-stroked-button color="whie" style="border-color: aliceblue;" (click)="productByCategory(cat.id_cat)"> {{cat.name}} </button>
+          </mat-option>
+     
+    </mat-select>
+    <mat-select  placeholder="Brands"  name="brandProduct" id="brandProduct"style="width: 150px;"  >
+        <mat-option *ngFor="let brand of brands"> 
+            <button mat-stroked-button color="whie" style="border-color: aliceblue;" (click)="allProductByBrand(brand.id_brand)"> {{brand.nameBrand}} </button>
+          </mat-option>
+        
+    </mat-select> 
+    </mat-toolbar>
+    
+    <div class="container mt-5">
+        <mat-grid-list cols="4" rowHeight="2:4" gutterSize="10">
+               <mat-grid-tile *ngFor="let prod of productsByCatgeorys">
+                
+                      <mat-card class="example-card">
+                            <a (click)="productById(prod.id)">
+                                   <img style="width: 250px; height: 250px;" mat-card-image [src]="prod.productImages[0].url">
+                                      </a> <div class="mt-3">
+                                    <mat-card-content> 
+                                           <mat-card-title > {{prod.productName | uppercase }}</mat-card-title>
+                                           <mat-card-subtitle> {{prod.category.name | uppercase }} </mat-card-subtitle>
+                                           <p style="white-space: inherit;height: 40px;width: 288;
+                                           overflow: hidden;text-overflow: ellipsis;">
+                                                  {{prod.description}}.
+                                           </p>
+                                           <p>
+                                                  Brand <b>{{prod.brandProduct.nameBrand }}</b>
+                                           </p>
+                                           <p>
+                                                  Actual price <b>{{prod.actPrice | currency }}</b>
+                                           </p>
+                                           <p>
+                                                  Old price <b><i style="color: red;"><u>{{prod.price | currency}}</u></i></b>
+                                           </p>
+                                           <div align="begin">
+                                                 <button mat-raised-button color="warn" style="position:sticky;"
+                                                 (click)="productById(prod.id)"
+                                                 aria-label="Example icon button with a delete icon">
+                                                 View Details </button>
+                                               
+                                                 </div>
+                                            
+                                    </mat-card-content>
+                             </div>
+                      </mat-card>
+               </mat-grid-tile>
+        </mat-grid-list>
+    </div>

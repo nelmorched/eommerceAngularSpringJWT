@@ -1,0 +1,20 @@
+<div align="center">
+    <h3>UPDATE  BRAND </h3> 
+    <form (ngSubmit)="updateBrand()">
+      
+     <mat-form-field appearance="outline" class="w-50" >
+         <mat-label>Put BRAND name here</mat-label>
+         <input 
+        [(ngModel)]="brand.nameBrand"
+         name="nameBrand"
+         matInput placeholder="Put Category name here">
+         <mat-icon matSuffix>BRAND</mat-icon>
+       </mat-form-field>
+
+         
+       <div align="center">
+        <button  type="submit" mat-raised-button color="primary">Update BRAND</button>
+
+       </div>
+    </form> 
+</div>

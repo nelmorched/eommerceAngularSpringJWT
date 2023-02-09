@@ -1,0 +1,68 @@
+<div class="container mt-5">
+     
+    <div class="card" style="width: 100;" >
+         <i  *ngIf="valid" class="text text-center alert alert-danger">
+                {{message}}
+         </i>
+         <i  *ngIf="NotValid" class="text text-center alert alert-success">
+            {{message}}
+     </i>
+      <div class="text-center mt-3"> 
+          
+       
+   
+        <mat-label><h3>Register</h3></mat-label>
+            
+            <form  (ngSubmit)="Register()"  >
+                <div class="text-center mt-3">
+                <mat-form-field appearance="outline" class="w-50" style="margin-right: 5px;">
+                    <mat-label>Enter your First Name</mat-label>
+                    <input
+                    class="form-control " name="userFirstName"
+                    [(ngModel)]="userApp.userFirstName"   matInput placeholder="Enter your First Name">
+
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="w-50" >
+                    <mat-label>Enter your Last Name</mat-label>
+                    <input
+                    class="form-control" name="userLastName"
+                    [(ngModel)]="userApp.userLastName"   matInput placeholder="Enter your Last Name">
+
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="w-50" style="margin-right: 5px;">
+                    <mat-label>Enter your Username or Email</mat-label>
+                    <input
+                    class="form-control" name="userName"
+                    [(ngModel)]="userApp.userName"    matInput placeholder="Enter your Username or Email">
+
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="w-50" >
+                  <mat-label>Enter your password</mat-label>
+                 <input 
+                 class="form-control" name="userPassword" 
+                 [(ngModel)]="userApp.userPassword"
+                   matInput [type]="hide ? 'password' : 'text'">
+                 <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                 </button>
+                </mat-form-field>
+                <br>
+                </div>
+                <div class="text-center mt-3">
+                    <button class="w-50"  mat-raised-button type="submit" color="primary" >Register</button><br>
+
+                </div>
+                <div class="text-center mt-3">
+                  <button style="border: 0px;" mat-stroked-button  routerLink="/login">
+                     have account !! Login
+                    </button>
+
+                </div>
+         
+          </form>
+        </div>
+          
+        </div>
+
+</div>
+
